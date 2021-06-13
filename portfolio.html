@@ -92,17 +92,27 @@
           <h2 class="visually-hidden">Портфолио</h2>
           <ul class="list">
             <li class="portfolio-list-item">
-              <a href="" class="card"
-                ><img
-                  src="./images/img.P1.jpg"
-                  alt="фото вебсайту"
-                  width="370"
-                />
+              <a href="" class="card">
+                <div class="card-thumb">
+                  <img
+                    src="./images/img.P1.jpg"
+                    alt="фото вебсайту"
+                    width="370"
+                  />
+                  <div class="content-hidden">
+                    <p class="text-hidden">
+                      Технокряк это современная площадка распространения
+                      коронавируса. Компании используют эту платформу для
+                      цифрового шпионажа и атак на защищённые сервера
+                      конкурентов.
+                    </p>
+                  </div>
+                </div>
                 <div class="container-portfolio-list-item">
                   <h3 class="portfolio-list-item-signature">Технокряк</h3>
                   <p class="portfolio-list-item-info">Маркетинг</p>
-                </div></a
-              >
+                </div>
+              </a>
             </li>
             <li class="portfolio-list-item">
               <a href="" class="card">
@@ -270,21 +280,5 @@
         </div>
       </div>
     </footer>
-    <script src="./js/modal.js">
-          (() => {
-        const refs = {
-          openModalBtn: document.querySelector('[data-modal-open]'),
-          closeModalBtn: document.querySelector('[data-modal-close]'),
-          modal: document.querySelector('[data-modal]'),
-        };
-
-        refs.openModalBtn.addEventListener('click', toggleModal);
-        refs.closeModalBtn.addEventListener('click', toggleModal);
-
-        function toggleModal() {
-          refs.modal.classList.toggle('is-hidden');
-        }
-      })();
-    </script>
   </body>
 </html>

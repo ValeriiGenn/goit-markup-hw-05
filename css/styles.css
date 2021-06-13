@@ -13,6 +13,9 @@
   --benefitsli-color: rgba(117, 117, 117, 1);
   --icon-color: rgba(175, 177, 184, 1);
   --bgicon-color: rgba(255, 255, 255, 0.1);
+  --bgmodal-color: rgba(255, 255, 255, 1);
+  --bgthumb-color: rgba(47, 48, 58, 0, 8);
+  --bgthcard-color: rgba(33, 150, 243, 0, 9);
 }
 body {
   background-color: #ffffff;
@@ -61,6 +64,26 @@ img {
 .site-nav {
   display: flex;
 }
+.site-nav .current {
+  position: relative;
+  color: var(--accent-color);
+}
+.current::after {
+  position: absolute;
+  bottom: -1px;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: currentColor;
+  bottom: -32px;
+}
+.header .link {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
 .auth-nav-list-item:not(:last-child) {
   margin-right: 50px;
 }
@@ -96,6 +119,7 @@ img {
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-nav .link:hover,
@@ -104,16 +128,6 @@ img {
 }
 .site-nav .link.current {
   color: var(--accent-color);
-}
-.site-nav .link.current::after {
-  display: block;
-  position: absolute;
-  left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
-  width: 49; /*задаём длинну линии до наведения курсора*/
-  height: 4px; /*задаём ширину линии*/
-  background-color: var(--accent-color);
-  content: "";
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .auth-nav .link:hover,
 .auth-nav .link:focus {
@@ -143,69 +157,11 @@ img {
 .hero-section {
   max-width: 1600px;
   margin: 0 auto;
-  text-align: center;
   display: block;
-  justify-content: center;
-  padding: 200px 0;
+  padding-top: 200px;
+  padding-bottom: 200px;
   background-color: var(--hero-color);
-  height: 600px;
-  margin: 0 auto;
-
-  background-image: linear-gradient(
-      to right,
-      rgba(47, 48, 58, 0.4),
-      rgba(47, 48, 58, 0.4)
-    ),
-    url("../images/Img.bgoptm.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  /*background: cover;*/
 }
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0, 2);
-  *opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.backdrop .is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-.backdrop .is-hidden .modal {
-  transform: translate(-50%, -50%);
-}
-.modal {
-  position: absolute;
-  min-width: 528px;
-  min-height: 581px;
-  padding: 15px;
-
-  background-color: rgba(238, 238, 238, 1);
-
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btnclose {
-  position: absolute;
-  padding: 0;
-  top: 8px;
-  right: 8px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  list-style: none;
-  border-radius: 50%;
-  border: none;
-}
-
 .overlay {
   max-width: 1600px;
   height: 600px;
@@ -235,11 +191,9 @@ img {
   text-align: center;
   text-transform: uppercase;
 }
-
-.button-hero {
+.hero-section .link {
   display: inline-block;
-
-  /*text-align: center;*/
+  text-align: center;
   background-color: var(--accent-color);
   color: var(--white-color);
   font-family: inherit;
@@ -247,13 +201,8 @@ img {
   font-weight: bold;
   font-size: 16px;
   line-height: 1.87;
-  border: 0;
-  border-radius: 4px;
-  box-shadow: 0px 4px 4px rgb(0 0 0 / 15%);
-  padding: 10px 32px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /*transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);*/
 }
-
 /*section*/
 .visually-hidden {
   position: absolute;
@@ -343,7 +292,24 @@ img {
 .section-title-directions {
   margin-bottom: 0 50px 0;
 }
-
+.card-thumb {
+  position: relative;
+}
+.card-thumb .title {
+  padding-top: 27px;
+  padding-bottom: 27px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--bgmodal-color);
+  background-color: var(--bgthumb-color);
+}
+.card-thumb .content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 /*наша команда*/
 .team {
   padding-top: 94px;
@@ -503,7 +469,6 @@ img {
   text-align: center;
   border: 0;
   cursor: pointer;
-
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -659,4 +624,68 @@ img {
 .network-link:hover,
 .network-link:focus {
   background-color: var(--accent-color);
+}
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+.backdrop .modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 528px;
+  height: 581px;
+  background-color: var(--white-color);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop .button {
+  position: absolute;
+  padding: 0;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  border-radius: 50%;
+  border: none;
+}
+.card-thumb {
+  position: relative;
+  min-width: 100%;
+  overflow: hidden;
+}
+.content-hidden {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  padding: 63px 24px;
+  background-color: var(--bgthcard-color);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.text-hidden {
+  color: var(--white-color);
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.556;
 }
