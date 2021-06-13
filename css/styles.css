@@ -506,6 +506,8 @@ img {
   flex-basis: calc((100% -60px) / 3 - 30px);
   margin-left: 30px;
   margin-top: 30px;
+  display: list-item;
+  text-align: -webkit-match-parent;
 }
 .card {
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -668,11 +670,12 @@ img {
   border-radius: 50%;
   border: none;
 }
-.card-thumb {
+.portlist .card-thumb {
   position: relative;
   min-width: 100%;
   overflow: hidden;
 }
+
 .content-hidden {
   position: absolute;
   width: 100%;
@@ -681,6 +684,10 @@ img {
   padding: 63px 24px;
   background-color: var(--bgthcard-color);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.portlist .card:hover.content-hidden,
+.portlist .card :focus.content-hidden {
+  transform: translate(-100%);
 }
 .text-hidden {
   color: var(--white-color);
