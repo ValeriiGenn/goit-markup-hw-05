@@ -320,6 +320,7 @@ img {
 .team .list {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .team-list-item:not(:last-child) {
@@ -334,8 +335,7 @@ img {
   margin-bottom: 50px;
 }
 .container-team-list-item {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px 32px;
 }
 .team-list-item-title {
   color: var(--black-color);
@@ -476,6 +476,7 @@ img {
 .button:focus {
   background-color: var(--accent-color);
   box-shadow: 5px 5px 5px 5px var(--gray-color);
+  color: var(--white-color);
 }
 /*портфоліо */
 
@@ -541,7 +542,8 @@ img {
 .card-thumb:hover {
   opacity: 1;
 }
-.card:hover .content-hidden {
+.portlist .card:hover .content-hidden,
+.portlist .card:focus .content-hidden {
   transform: translateY(0);
 }
 .content-hidden {
@@ -573,6 +575,9 @@ img {
 }
 .container-footer {
   display: flex;
+  align-items: baseline;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .address-list {
@@ -616,7 +621,6 @@ img {
 .social-networks {
   margin: 0;
   width: 206px;
-  padding: 15px 0 97px 0;
   margin-left: 70px;
 }
 .join {
